@@ -10,7 +10,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/auth/adminlogin', values, { withCredentials: true })
+    axios.post('http://localhost:3000/auth/adminlogin', values, { withCredentials: true})
       .then(res => {
         console.log(res);
       })
