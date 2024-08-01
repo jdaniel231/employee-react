@@ -1,27 +1,40 @@
 import { useState } from 'react';
 import './style.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [values, setValues] = useState({
     email: '',
     password: ''
   });
+  const [error, setError] = useState('');
+
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/auth/adminlogin', values, { withCredentials: true})
+    setError('');
+    axios.post('http://localhost:3000/auth/adminlogin', values,)
       .then(res => {
-        console.log(res);
+        if (res.data.loginStatus) {
+          console.log(res);
+          navigate('/dashboard');
+        } else {
+          setError(res.data.message || 'Invalid Credentials');
+        }
       })
       .catch(err => {
         console.log(err);
+        setError('An unexpected error occurred. Please try again.');
       });
   }
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
       <div className="p-3 rounded- w-25 border loginForm">
+        <div className='text-danger'>{error}</div>
         <h2>Login Page</h2>
         <form onSubmit={handleSubmit}>
           <div className='mb-3'>
