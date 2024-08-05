@@ -7,6 +7,7 @@ import Home from './Components/Home';
 import Employee from './Components/Employee.jsx';
 import Profile from './Components/Profile.jsx';
 import Category from './Components/Category.jsx';
+import AddCategory from './Components/AddCategory.jsx';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<Home />}></Route>
           <Route path='employee' element={<Employee />}></Route>
           <Route path='category' element={<Category />}></Route>
+          <Route path='add_category' element={<AddCategory/>}></Route>
           <Route path='profile' element={<Profile />}></Route>
         </Route>
       </Routes>
