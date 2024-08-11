@@ -8,6 +8,8 @@ import Employee from './Components/Employee.jsx';
 import Profile from './Components/Profile.jsx';
 import Category from './Components/Category.jsx';
 import AddCategory from './Components/AddCategory.jsx';
+import AddEmployee from './Components/AddEmployee.jsx';
+import EditEmployee from './Components/EditEmployee.jsx';
 
 function App() {
 
@@ -18,6 +20,8 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<Home />}></Route>
           <Route path='employee' element={<Employee />}></Route>
+          <Route path='add_employee' element={<AddEmployee />}></Route>
+          <Route path='edit_employee/:id' element={<EditEmployee />}></Route>
           <Route path='category' element={<Category />}></Route>
           <Route path='add_category' element={<AddCategory/>}></Route>
           <Route path='profile' element={<Profile />}></Route>
