@@ -1,9 +1,24 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import axios from 'axios';
 
 const Dashboard = () => {
   const location = useLocation();
   const { pathname } = location;
+
+  axios.defaults.withCredentials = true;
+
+  const handleLogout = () => {
+    axios.get('http://localhost:3000/auth/logout')
+      .then(res => {
+        if(res.data.Status) {
+          window.location.href = '/adminlogin';
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   return (
     <div className="d-flex">
@@ -38,8 +53,8 @@ const Dashboard = () => {
               Profile
             </Link>
           </li>
-          <li className="nav-item">
-            <Link to="/customers" className="nav-link text-white">
+          <li className="nav-item" onClick={handleLogout}>
+            <Link className="nav-link text-white">
               <i className="bi bi-box-arrow-right me-2"></i>
               Logout
             </Link>
@@ -53,6 +68,7 @@ const Dashboard = () => {
         <Outlet />
       </div>
     </div>
+  
   );
 }
 
