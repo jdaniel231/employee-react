@@ -22,7 +22,8 @@ function App() {
         <Route path='/start' element={<Start />} />
         <Route path="/adminlogin" element={<Login />} />
         <Route path="/employee_login" element={<EmployeeLogin />} />
-        <Route path="/employee_details" element={<EmployeeDetails />} />
+        <Route path="/employee_details/:id" element={<EmployeeDetails />}>
+        </Route>
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<Home />}></Route>
           <Route path='employee' element={<Employee />}></Route>
