@@ -9,6 +9,7 @@ const Employee = () => {
   useEffect(() => {
     axios.get('http://localhost:3000/auth/employee')
       .then(res => {
+        console.log(res.data.Result); // Adicione isso para depuração
         if (res.data.Status) {
           setEmployee(res.data.Result);
         } else {
@@ -57,7 +58,8 @@ const Employee = () => {
             {employee.map(e => (
               <tr key={e.id} >
                 <td >{e.name}</td>
-                <td><img src={`http://localhost:3000/uploads/`+e.image} className="employee_image" alt="Employee" /></td>
+                <td><img src={`http://localhost:3000/images/${e.image}`} className="employee_image" alt="Employee" />
+                </td>
                 <td>{e.email}</td>
                 <td >{e.salary}</td>
                 <td >{e.address}</td>

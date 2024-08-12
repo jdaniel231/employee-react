@@ -20,13 +20,22 @@ const EmployeeDetails = () => {
       });
   }, [id]);
 
+  // Early return if employee is null
+  if (!employee) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <div className="d-flex p-2 justify-content-center shadow">
         <h4>Employee Management System</h4>
       </div>
       <div className="d-flex justify-content-center flex-column align-items-center mt-3">
-        <img src={`http://localhost:3000/employee/uploads/`+employee.image} alt="Employee" className="emp_det_image" />
+        <img 
+          src={`http://localhost:3000/images/` + employee.image}  
+          alt="Employee" 
+          className="emp_det_image" 
+        />
         <div className="d-flex align-items-center flex-column mt-5">
           <h3>Name: {employee.name}</h3>
           <h3>Email: {employee.email}</h3>
