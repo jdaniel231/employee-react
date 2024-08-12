@@ -10,13 +10,19 @@ import Category from './Components/Category.jsx';
 import AddCategory from './Components/AddCategory.jsx';
 import AddEmployee from './Components/AddEmployee.jsx';
 import EditEmployee from './Components/EditEmployee.jsx';
+import Start from './Components/Start.jsx';
+import EmployeeLogin from './Components/EmployeeLogin.jsx';
+import EmployeeDetails from './Components/EmployeeDetails.jsx';
 
 function App() {
 
   return (
     <BrowserRouter>
       <Routes>
+        <Route path='/start' element={<Start />} />
         <Route path="/adminlogin" element={<Login />} />
+        <Route path="/employee_login" element={<EmployeeLogin />} />
+        <Route path="/employee_details" element={<EmployeeDetails />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<Home />}></Route>
           <Route path='employee' element={<Employee />}></Route>
