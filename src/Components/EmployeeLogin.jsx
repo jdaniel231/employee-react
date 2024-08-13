@@ -21,6 +21,7 @@ const EmployeeLogin = () => {
    axios.post('http://localhost:3000/employee/employee_login', values)
       .then(res => {
         if (res.data.loginStatus) {
+          localStorage.setItem('valid', true);
           navigate('/employee_details/'+res.data.id);
         } else {
           setError(res.data.message || 'Invalid Credentials');

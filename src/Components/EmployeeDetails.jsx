@@ -20,7 +20,19 @@ const EmployeeDetails = () => {
       });
   }, [id]);
 
-  // Early return if employee is null
+  const handleLogout = () => {
+    axios.get('http://localhost:3000/employee/logout')
+      .then(res => {
+        if(res.data.Status) {
+          localStorage.removeItem('valid');
+          window.location.href = '/';
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+  
   if (!employee) {
     return <div>Loading...</div>;
   }
@@ -43,7 +55,7 @@ const EmployeeDetails = () => {
         </div>
         <div>
           <button className="btn btn-primary m-2">Edit</button>
-          <button className="btn btn-danger">Logout</button>
+          <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
         </div>
       </div>
     </div>

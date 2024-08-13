@@ -9,7 +9,7 @@ const Employee = () => {
   useEffect(() => {
     axios.get('http://localhost:3000/auth/employee')
       .then(res => {
-        console.log(res.data.Result); // Adicione isso para depuração
+        console.log(res.data.Result);
         if (res.data.Status) {
           setEmployee(res.data.Result);
         } else {
