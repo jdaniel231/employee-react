@@ -7,12 +7,13 @@ const Dashboard = () => {
   const { pathname } = location;
 
   axios.defaults.withCredentials = true;
-
+  
   const handleLogout = () => {
     axios.get('http://localhost:3000/auth/logout')
       .then(res => {
         if(res.data.Status) {
-          window.location.href = '/adminlogin';
+          localStorage.removeItem('valid');
+          window.location.href = '/';
         }
       })
       .catch(err => {

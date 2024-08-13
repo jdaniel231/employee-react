@@ -13,18 +13,29 @@ import EditEmployee from './Components/EditEmployee.jsx';
 import Start from './Components/Start.jsx';
 import EmployeeLogin from './Components/EmployeeLogin.jsx';
 import EmployeeDetails from './Components/EmployeeDetails.jsx';
+import PrivateRoute from './Components/PrivateRoute.jsx';
+
 
 function App() {
 
+  
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/start' element={<Start />} />
+        <Route path='/' element={<Start />} />
         <Route path="/adminlogin" element={<Login />} />
         <Route path="/employee_login" element={<EmployeeLogin />} />
-        <Route path="/employee_details/:id" element={<EmployeeDetails />}>
+        <Route path="/employee_details/:id" element={
+          <PrivateRoute>
+            <EmployeeDetails />
+          </PrivateRoute>
+        }>
         </Route>
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route path="/dashboard" element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        }>
           <Route index element={<Home />}></Route>
           <Route path='employee' element={<Employee />}></Route>
           <Route path='add_employee' element={<AddEmployee />}></Route>
